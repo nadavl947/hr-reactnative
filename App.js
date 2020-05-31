@@ -1,19 +1,52 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+import { Provider } from "react-redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import reducers from "./store/reducers/reducers";
 
-export default function App() {
+import MainNavigation from "./navigation/navigations";
+
+import { init } from "./helpers/db";
+
+init()
+  .then(() => {
+    console.log("initial");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+  });
+};
+
+const rootReducer = combineReducers(reducers);
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const App = () => {
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setDataLoaded(true)}
+        onError={(error) => console.log(error)}
+      />
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <MainNavigation />
+    </Provider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

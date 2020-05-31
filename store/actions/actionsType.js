@@ -1,0 +1,23 @@
+export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+export const USER_LOGININ = 'USER_LOGININ';
+export const GET_COMPANY = 'GET_COMPANY';
+export const GET_USERES = 'GET_USERES';
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const GET_POSTS = 'GET_POSTS';
+export const GET_EVENTS = 'GET_EVENTS';
+export const GET_USER_SHIFTS = 'GET_USER_SHIFTS';
+export const GET_COMPANY_CHATS = 'GET_COMPANY_CHATS';
+export const GET_COMPANY_MESSAGES = 'GET_COMPANY_MESSAGES';
+
+export const HANDLE_LIKE_POST = 'HANDLE_LIKE_POST';
+export const CREATE_NEW_POST = 'CREATE_NEW_POST';
+export const CREATE_NEW_EVENT = 'CREATE_NEW_EVENT';
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const CHANGE_IMAGE = 'CHANGE_IMAGE';
+export const EDIT_PROFILE_DATA = 'EDIT_PROFILE_DATA';
+export const DELETE_SHIFT = 'DELETE_SHIFT';
+export const START_NEW_SHIFT = 'START_NEW_SHIFT';
+export const END_SHIFT = 'END_SHIFT';
+export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
+
+export const CREATE_NEW_USER = 'CREATE_NEW_USER';
